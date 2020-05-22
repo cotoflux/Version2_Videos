@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 public class Uso_clases {
 	public static void main(String[] args) {
 		List<User> users = new ArrayList<User>();
+		User administrador = new User("Amin", "Super", "admin","admin123");
+		users.add(administrador);
 		boolean endSession = false;
 		Scanner entradas = new Scanner(System.in);
 		
@@ -21,9 +23,9 @@ public class Uso_clases {
 			int respuestaInicial = preguntaDeEntrada(entradas);
 		
 
-			if(respuestaInicial != 1  && respuestaInicial !=2  && respuestaInicial != 3) {
+			if(respuestaInicial != 1  && respuestaInicial !=2  && respuestaInicial != 3 && respuestaInicial != 4) {
 				
-				System.out.println("Enter a number in between 1 and 3 to make your selection");
+				System.out.println("Enter a number in between 1 and 4 to make your selection");
 				System.out.println("");
 				endSession=true;
 			
@@ -31,14 +33,22 @@ public class Uso_clases {
 				switch(respuestaInicial) {
 					case 1:
 						System.out.println("Register for new user"); 
-						
-						endSession=false;
+						createUser(entradas, users);
+						System.out.println("Estas correctamente registrado");
+						System.out.println(users.toString());
+						endSession=true;
 						break;
+					
 					case 2:
+						System.out.println("Un registrer a user");
+						System.out.println("Pitty that you unregister. Remember you will welcome back any time");
+						endSession= true;
+						break;
+					case 3:
 						System.out.println("Log in a new user");
 						endSession=false;
 						break;
-					case 3:
+					case 4:
 						System.out.println("Exit the aplication");
 						endSession=true;
 						break;
@@ -66,10 +76,11 @@ public class Uso_clases {
     		System.out.println("Tell me what do you want to do");
     		System.out.println("Write down an integer, if you writte other than an integer you will be promted the exception and the questions again. ");
     		System.out.println("1. Register");
-    		System.out.println("2. Login");
-    		System.out.println("3. Exit");
+    		System.out.println("2. Unregister");
+    		System.out.println("3. Login");
+    		System.out.println("4. Exit");
     		respuesta= Integer.parseInt(entradas.nextLine());
-        	System.out.println("El numero decimal escrito ha sido "+respuesta);
+        	System.out.println("The number written in the console is: "+respuesta);
 
         	numeroIncorrecto=false;
             
@@ -83,8 +94,51 @@ public class Uso_clases {
 		return respuesta;
 	}
 	
+	public static String requestNewUserName(Scanner entradas) {
+
+		System.out.println("Type your name");
+		String nameRegistered= entradas.nextLine();
+		return nameRegistered;
+		
+	}
 	
+	public static String requestNewUserSurname(Scanner entradas) {
+		
+		System.out.println("Type your surname");
+		String surnameRegistered= entradas.nextLine();
+		return surnameRegistered;
+		
+	}
+	
+	public static String requestNewUserUserName(Scanner entradas) {
+		
 
+		System.out.println("Type your user name");
+		String userNameRegistered= entradas.nextLine();
+		return userNameRegistered;
+	}
 
+	public static String requestNewUserPassword(Scanner entradas) {
+		
+
+		System.out.println("Type your password");
+		String passwordRegistered= entradas.nextLine();
+		return passwordRegistered;
+	}
+	
+	public static void createUser(Scanner entradas, List<User> users) {
+		
+		String name= requestNewUserName(entradas);
+		String surname = requestNewUserSurname(entradas);
+		String userName = requestNewUserName(entradas);
+		String password = requestNewUserPassword(entradas);
+				
+		User newUsers = new User(name, surname, userName, password);
+		users.add(newUsers);
+	}
+	
+	public static String userToString(String name, String surname,String userName, String password) {
+		return "The user you created is " + name + " "+ surname + "The user is: " + userName + ", with the password " + password;
+	}
 }
 

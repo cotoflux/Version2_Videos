@@ -1,6 +1,7 @@
 package misVideos;
 
 public class User {
+	
 	private String name;
 	private String surname;
 	private String userName;
@@ -70,6 +71,10 @@ public class User {
 		this.password = password;
 	}
 	
+	@Override
+	public String toString() {
+		return "The user name is:  " + this.name + " " + this.surname + ", Created with the user name of: " +this.userName + ", with password: " + this.password;
+		}
 	
 
 }
