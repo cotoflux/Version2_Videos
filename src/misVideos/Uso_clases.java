@@ -61,7 +61,7 @@ public class Uso_clases {
 		do {
 		
         try{
-        	if(numeroIncorrecto=false) {
+        	if(numeroIncorrecto==false) {
         		System.out.println("ES FALSE");
         	}else if(numeroIncorrecto==true) {
         		System.out.println("ES TRUE");
