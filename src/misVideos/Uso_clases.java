@@ -144,22 +144,27 @@ public class Uso_clases {
 		String userNameToUnregister = requestNewUserUserName(entradas);
 		String passwordToUnregister = requestNewUserPassword(entradas);
 		
-		
+		User userToUnregister = new User(nameToUnregister, surnameToUnregister, userNameToUnregister, passwordToUnregister);
 		
 		for(int i=0; i<users.size(); i++) {
+			
+				if(users.get(i).equals(userToUnregister)){
+					System.out.println("Encontradp");
+				}else{
+					System.out.println("No encontrado");
+				}; 
 
-			System.out.println(users.get(i)); 
 		}
 		
-		
-		for(User user : users){
-			if(user.equals(nameToUnregister) && user.equals(surnameToUnregister) && user.equals(userNameToUnregister) && user.equals(passwordToUnregister)){
+		/*
+
+			if(user.equals(userToUnregister)){
 				System.out.println("Encontrado");
 			} else {
 				System.out.println("No encontrado");
 			}
-		}
-		/*
+
+		
 		if(users.equals(nameToUnregister) && users.equals(surnameToUnregister) && users.equals(userNameToUnregister) && users.equals(passwordToUnregister) ){
 			System.out.println("You have been unregistered");
 		} else {
