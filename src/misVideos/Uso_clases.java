@@ -41,6 +41,7 @@ public class Uso_clases {
 					
 					case 2:
 						System.out.println("Un registrer a user");
+						unRegisterOneUser(entradas, users); 
 						System.out.println("Pitty that you unregister. Remember you will welcome back any time");
 						endSession= true;
 						break;
@@ -130,15 +131,33 @@ public class Uso_clases {
 		
 		String name= requestNewUserName(entradas);
 		String surname = requestNewUserSurname(entradas);
-		String userName = requestNewUserName(entradas);
+		String userName = requestNewUserUserName(entradas);
 		String password = requestNewUserPassword(entradas);
 				
 		User newUsers = new User(name, surname, userName, password);
 		users.add(newUsers);
 	}
 	
-	public static String userToString(String name, String surname,String userName, String password) {
-		return "The user you created is " + name + " "+ surname + "The user is: " + userName + ", with the password " + password;
+	public static void unRegisterOneUser(Scanner entradas, List<User> users) {
+		String nameToUnregister= requestNewUserName(entradas);
+		String surnameToUnregister = requestNewUserSurname(entradas);
+		String userNameToUnregister = requestNewUserUserName(entradas);
+		String passwordToUnregister = requestNewUserPassword(entradas);
+		
+		for(User user : users){
+			if(user.getName().equals(nameToUnregister) && user.getSurname().equals(surnameToUnregister) && user.getLogInUserName().equals(userNameToUnregister) && user.getLogInPassword().equals(passwordToUnregister)){
+				System.out.println("Encontrado");
+			} else {
+				System.out.println("No encontrado");
+			};
+		}
+		/*
+		if(users.equals(nameToUnregister) && users.equals(surnameToUnregister) && users.equals(userNameToUnregister) && users.equals(passwordToUnregister) ){
+			System.out.println("You have been unregistered");
+		} else {
+			System.out.println("We have not found this user please check your values");
+	}*/
+
 	}
 }
 
