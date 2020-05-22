@@ -47,6 +47,7 @@ public class Uso_clases {
 						break;
 					case 3:
 						System.out.println("Log in a new user");
+						logInUser(entradas, users);
 						endSession=false;
 						break;
 					case 4:
@@ -144,31 +145,40 @@ public class Uso_clases {
 		String surnameToUnregister = requestNewUserSurname(entradas);
 		String userNameToUnregister = requestNewUserUserName(entradas);
 		String passwordToUnregister = requestNewUserPassword(entradas);
+		System.out.println(" ");
 		
 		User userToUnregister = new User(nameToUnregister, surnameToUnregister, userNameToUnregister, passwordToUnregister);
-		
-		for(int i=0; i<users.size(); i++) {
-		   System.out.println(users.get(i));
-	
-		}
-		
+				
 		for(User user : users){
 
 			if(user.equals(userToUnregister)){
 				value= users.indexOf(userToUnregister);
-				System.out.println(value);
-				System.out.println("Encontrado");
+				System.out.println("Found, we are proceeding to delte your account");
 			} 
 		}
 		
 		users.remove(value);
+		System.out.println(" ");
+		
+	}
+	
+	public static void logInUser(Scanner entradas, List<User> users) {
+		String userNameLogin = requestNewUserUserName(entradas);
+		String passwordLogin = requestNewUserPassword(entradas);
+
+		User registeredUser = new User("", "", userNameLogin, passwordLogin);
 		
 		for(int i=0; i<users.size(); i++) {
 			System.out.println(users.get(i));
-
-
 		}
-
+		for(User user: users) {
+			if(user.getLogInUserName() == userNameLogin) {
+				System.out.println("Estas correctamente registrado");
+			} else {
+				System.out.println("No te has logeado correctamente");
+				
+			}
+		}
 	}
 }
 
