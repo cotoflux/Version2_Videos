@@ -31,6 +31,7 @@ public class Uso_clases {
 				switch(respuestaInicial) {
 					case 1:
 						System.out.println("Register for new user"); 
+						
 						endSession=false;
 						break;
 					case 2:
@@ -63,7 +64,7 @@ public class Uso_clases {
         try{
 
     		System.out.println("Tell me what do you want to do");
-    		System.out.println("Escribe un numero entero, si escribes otra cosa que no sea un numero saltara la excepcion: ");
+    		System.out.println("Write down an integer, if you writte other than an integer you will ve sentsaltara la excepcion: ");
     		System.out.println("1. Register");
     		System.out.println("2. Login");
     		System.out.println("3. Exit");
