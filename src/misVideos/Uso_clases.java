@@ -23,7 +23,7 @@ public class Uso_clases {
 
 			if(respuestaInicial != 1  && respuestaInicial !=2  && respuestaInicial != 3) {
 				
-				System.out.println("Entra un número entre 1 y 3 para hacer tu selección");
+				System.out.println("Enter a number in between 1 and 3 to make your selection");
 				System.out.println("");
 				endSession=true;
 			
@@ -64,7 +64,7 @@ public class Uso_clases {
         try{
 
     		System.out.println("Tell me what do you want to do");
-    		System.out.println("Write down an integer, if you writte other than an integer you will ve sentsaltara la excepcion: ");
+    		System.out.println("Write down an integer, if you writte other than an integer you will be promted the exception and the questions again. ");
     		System.out.println("1. Register");
     		System.out.println("2. Login");
     		System.out.println("3. Exit");
@@ -75,7 +75,7 @@ public class Uso_clases {
             
         }catch(NumberFormatException e){
         	 
-             System.out.println("Error, ha introducido un valor incorrecto");
+             System.out.println("Error, the value you introduced is not correct. Please enter an integer to the console");
              numeroIncorrecto=true;
         }
 		}while(numeroIncorrecto==true);
