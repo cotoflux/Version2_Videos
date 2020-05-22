@@ -139,6 +139,7 @@ public class Uso_clases {
 	}
 	
 	public static void unRegisterOneUser(Scanner entradas, List<User> users) {
+		int value=-1;
 		String nameToUnregister= requestNewUserName(entradas);
 		String surnameToUnregister = requestNewUserSurname(entradas);
 		String userNameToUnregister = requestNewUserUserName(entradas);
@@ -147,29 +148,26 @@ public class Uso_clases {
 		User userToUnregister = new User(nameToUnregister, surnameToUnregister, userNameToUnregister, passwordToUnregister);
 		
 		for(int i=0; i<users.size(); i++) {
-			
-				if(users.get(i).equals(userToUnregister)){
-					System.out.println("Encontradp");
-				}else{
-					System.out.println("No encontrado");
-				}; 
-
+		   System.out.println(users.get(i));
+	
 		}
 		
-		/*
+		for(User user : users){
 
 			if(user.equals(userToUnregister)){
+				value= users.indexOf(userToUnregister);
+				System.out.println(value);
 				System.out.println("Encontrado");
-			} else {
-				System.out.println("No encontrado");
-			}
-
+			} 
+		}
 		
-		if(users.equals(nameToUnregister) && users.equals(surnameToUnregister) && users.equals(userNameToUnregister) && users.equals(passwordToUnregister) ){
-			System.out.println("You have been unregistered");
-		} else {
-			System.out.println("We have not found this user please check your values");
-	}*/
+		users.remove(value);
+		
+		for(int i=0; i<users.size(); i++) {
+			System.out.println(users.get(i));
+
+
+		}
 
 	}
 }
