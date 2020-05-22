@@ -163,16 +163,22 @@ public class Uso_clases {
 	}
 	
 	public static void logInUser(Scanner entradas, List<User> users) {
-		String userNameLogin = requestNewUserUserName(entradas);
-		String passwordLogin = requestNewUserPassword(entradas);
+		int value=-1;
 
-		User registeredUser = new User("", "", userNameLogin, passwordLogin);
+		String userNameRegister = requestNewUserUserName(entradas);
+		String passwordRegister = requestNewUserPassword(entradas);
+		System.out.println(" ");
+		
+
+		User usersRegistered = new User(userNameRegister, passwordRegister);
 		
 		for(int i=0; i<users.size(); i++) {
 			System.out.println(users.get(i));
 		}
 		for(User user: users) {
-			if(user.getLogInUserName() == userNameLogin) {
+			System.out.print(usersRegistered);
+			if(user.equals(usersRegistered)) {
+				
 				System.out.println("Estas correctamente registrado");
 			} else {
 				System.out.println("No te has logeado correctamente");

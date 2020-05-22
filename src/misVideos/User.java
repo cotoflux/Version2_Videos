@@ -6,8 +6,7 @@ public class User {
 	private String surname;
 	private String userName;
 	private String password;
-	private String logInUserName;
-	private String logInPassword;
+
 	
 	public User(String name, String surname, String userName, String password) {
 		
@@ -18,26 +17,11 @@ public class User {
 		
 	}
 	
-	public User(String logInUserName, String logInPassword) {
-		this.logInUserName = logInUserName;
-		this.logInPassword = logInPassword;
+	public User(String userName, String password) {
+		this.userName = userName;
+		this.password = password;
 	}
 
-	public String getLogInUserName() {
-		return logInUserName;
-	}
-
-	public void setLogInUserName(String logInUserName) {
-		this.logInUserName = logInUserName;
-	}
-
-	public String getLogInPassword() {
-		return logInPassword;
-	}
-
-	public void setLogInPassword(String logInPassword) {
-		this.logInPassword = logInPassword;
-	}
 
 	public String getName() {
 		return name;
@@ -98,16 +82,6 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (logInPassword == null) {
-			if (other.logInPassword != null)
-				return false;
-		} else if (!logInPassword.equals(other.logInPassword))
-			return false;
-		if (logInUserName == null) {
-			if (other.logInUserName != null)
-				return false;
-		} else if (!logInUserName.equals(other.logInUserName))
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
