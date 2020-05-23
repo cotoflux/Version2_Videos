@@ -214,13 +214,25 @@ public class Uso_clases {
 	}
 	
 	public static int videoQuestionsToUser(Scanner entradas) {
-		
 		int respuesta=0;
-		System.out.println("Tell me what you want to do, insert a number from 1 to 3");
-		System.out.println("1. Register a new Video");
-		System.out.println("2. See my videos");
-		System.out.println("3. Exit");
-		respuesta= Integer.parseInt(entradas.nextLine());
+		boolean numeroIncorrecto=false;
+		
+	        try{
+	
+	    		System.out.println("Tell me what you want to do, insert a number from 1 to 3");
+	    		System.out.println("1. Register a new Video");
+	    		System.out.println("2. See my videos");
+	    		System.out.println("3. Exit");
+	    		respuesta= Integer.parseInt(entradas.nextLine());
+	
+	        	numeroIncorrecto=false;
+	            
+	        }catch(NumberFormatException e){
+	        	 
+	             System.out.println("Error, the value you introduced is not correct. Please enter an integer to the console");
+	             numeroIncorrecto=true;
+	        } while(numeroIncorrecto==true);
+		
 		
 		return respuesta;
 	}
