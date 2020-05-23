@@ -44,4 +44,5 @@ public class Video {
 		this.listaTaggs = listaTaggs;
 	}
 
+	
 }

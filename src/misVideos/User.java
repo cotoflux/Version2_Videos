@@ -1,13 +1,26 @@
 package misVideos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
 	
 	private String name;
 	private String surname;
 	private String userName;
 	private String password;
+	List<Video>listVideosForUser = new ArrayList<Video>();
+
 
 	
+	public List<Video> getListVideosForUser() {
+		return listVideosForUser;
+	}
+
+	public void setListVideosForUser(List<Video> listVideosForUser) {
+		this.listVideosForUser = listVideosForUser;
+	}
+
 	public User(String name, String surname, String userName, String password) {
 		
 		this.name = name;
@@ -64,8 +77,7 @@ public class User {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((logInPassword == null) ? 0 : logInPassword.hashCode());
-		result = prime * result + ((logInUserName == null) ? 0 : logInUserName.hashCode());
+		result = prime * result + ((listVideosForUser == null) ? 0 : listVideosForUser.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
@@ -82,6 +94,11 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
+		if (listVideosForUser == null) {
+			if (other.listVideosForUser != null)
+				return false;
+		} else if (!listVideosForUser.equals(other.listVideosForUser))
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -105,10 +122,7 @@ public class User {
 		return true;
 	}
 
-	public void remove(int value) {
-		// TODO Auto-generated method stub
-		
-	}
+
 	
 
 }

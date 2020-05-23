@@ -12,10 +12,12 @@ import javax.swing.JOptionPane;
 public class Uso_clases {
 	public static void main(String[] args) {
 		List<User> users = new ArrayList<User>();
-		User administrador = new User("Amin", "Super", "admin","admin123");
+		User administrador = new User("Admin", "Super", "admin","admin123");
 		users.add(administrador);
 		boolean endSession = false;
+		boolean endVideo = false;
 		Scanner entradas = new Scanner(System.in);
+		
 		
 		do {
 			
@@ -46,8 +48,34 @@ public class Uso_clases {
 						endSession= true;
 						break;
 					case 3:
-						System.out.println("Log in a new user");
+						System.out.println("Log in to the application");
 						logInUser(entradas, users);
+						
+							do {
+								
+								int videoResponse = videoQuestionsToUser(entradas);
+								
+								switch(videoResponse){
+									case 1:
+										System.out.println("Create a new video: ");
+										endVideo=false;
+										break;
+									case 2:
+										System.out.println("I want to see all my videos: ");
+										endVideo=false;
+										break;
+									case 3:
+										System.out.println("I want to exit now");
+										endVideo=true;
+										break;
+									default:
+										System.out.println("We do not have this option. Thank you to enter a valid option");
+										endVideo=true;
+										break;
+								}
+								
+							}while(endVideo);
+							
 						endSession=false;
 						break;
 					case 4:
@@ -163,28 +191,38 @@ public class Uso_clases {
 	}
 	
 	public static void logInUser(Scanner entradas, List<User> users) {
-		int value=-1;
-
+		String nameToUnregister= requestNewUserName(entradas);
+		String surnameToUnregister = requestNewUserSurname(entradas);
 		String userNameRegister = requestNewUserUserName(entradas);
 		String passwordRegister = requestNewUserPassword(entradas);
 		System.out.println(" ");
 		
-
-		User usersRegistered = new User(userNameRegister, passwordRegister);
-		
+		User usersRegistered = new User(nameToUnregister, surnameToUnregister, userNameRegister, passwordRegister);
+		/*
 		for(int i=0; i<users.size(); i++) {
 			System.out.println(users.get(i));
-		}
+		}*/
 		for(User user: users) {
 			System.out.print(usersRegistered);
 			if(user.equals(usersRegistered)) {
-				
-				System.out.println("Estas correctamente registrado");
+				System.out.println(". Estas correctamente registrado");
 			} else {
-				System.out.println("No te has logeado correctamente");
+				System.out.println(". No te has logeado correctamente");
 				
 			}
 		}
+	}
+	
+	public static int videoQuestionsToUser(Scanner entradas) {
+		
+		int respuesta=0;
+		System.out.println("Tell me what you want to do, insert a number from 1 to 3");
+		System.out.println("1. Register a new Video");
+		System.out.println("2. See my videos");
+		System.out.println("3. Exit");
+		respuesta= Integer.parseInt(entradas.nextLine());
+		
+		return respuesta;
 	}
 }
 
