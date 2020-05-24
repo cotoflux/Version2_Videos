@@ -58,6 +58,7 @@ public class Uso_clases {
 								switch(videoResponse){
 									case 1:
 										System.out.println("Create a new video: ");
+										createAVideo(entradas);
 										endVideo=false;
 										break;
 									case 2:
@@ -235,6 +236,18 @@ public class Uso_clases {
 		
 		
 		return respuesta;
+	}
+	
+	public static String enterUrl(Scanner entradas) {
+		System.out.println("Escribe la url:");
+		String url = entradas.nextLine();
+		return url;
+	}
+	
+	public static void createAVideo(Scanner entradas) {
+		String url=
+		String title=
+		String 
 	}
 }
 
