@@ -1,5 +1,7 @@
 package misVideos;
 
+import java.awt.Component;
+import java.awt.Container;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -12,6 +14,7 @@ import javax.swing.JOptionPane;
 public class Uso_clases {
 	public static void main(String[] args) {
 		List<User> users = new ArrayList<User>();
+		List<Tagg> myTaggs = new ArrayList<Tagg>();
 		User administrador = new User("Admin", "Super", "admin","admin123");
 		users.add(administrador);
 		boolean endSession = false;
@@ -239,15 +242,40 @@ public class Uso_clases {
 	}
 	
 	public static String enterUrl(Scanner entradas) {
-		System.out.println("Escribe la url:");
-		String url = entradas.nextLine();
-		return url;
+		System.out.println("Type the url of the video: ");
+		String urlEntered = entradas.nextLine();
+		return urlEntered;
+	}
+	
+	public static String enterTitle(Scanner entradas) {
+		System.out.println("Type the title: ");
+		String titleEntered = entradas.nextLine();
+		return titleEntered;
+	}
+	
+	public static int enterNumberOfTaggs(Scanner entradas) {
+		System.out.println("Tell me how many tags do you want to enter");
+		int numberOfTags = entradas.nextInt();
+		return numberOfTags;
+	}
+	
+	public static String enterTags(Scanner entradas) {
+		System.out.println("Type one tag: ");
+		String taggEntered = entradas.nextLine();
+		return taggEntered;
 	}
 	
 	public static void createAVideo(Scanner entradas) {
-		String url=
-		String title=
-		String 
+		String url=enterUrl(entradas);
+		String title=enterTitle(entradas);
+		int numberTaggs = enterNumberOfTaggs(entradas);
+		List<String> myTaggs = new ArrayList<String>();
+		for(int i=0; i<numberTaggs; i++ ) {
+			System.out.println("Entra el tag");
+			String miTagg = entradas.nextLine();
+			myTaggs.add(miTagg);
+		}
+		
 	}
 }
 

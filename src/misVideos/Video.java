@@ -9,9 +9,10 @@ public class Video {
 	private List<Tagg> listaTaggs = new ArrayList<Tagg>();
 
 	
-	public Video(String url, String title){
+	public Video(String url, String title, List<Tagg> listaTaggs){
 		this.url = url;
 		this.title = title;
+		this.listaTaggs = listaTaggs;
 	}
 
 

@@ -2,7 +2,9 @@ package misVideos;
 
 public class Tagg {
 	
+	public static Object myTaggs;
 	private String tagg;
+	
 	
 	public Tagg(String tagg) {
 		this.tagg= tagg; 
