@@ -272,10 +272,12 @@ public class Uso_clases {
 		List<String> myTaggs = new ArrayList<String>();
 		for(int i=0; i<numberTaggs; i++ ) {
 			System.out.println("Entra el tag");
-			String miTagg = entradas.nextLine();
-			myTaggs.add(miTagg);
+			myTaggs.add(entradas.next());
 		}
 		
+		for(int j=0; j<numberTaggs; j++) {
+			System.out.println(myTaggs.get(j));
+		}
 	}
 }
 
