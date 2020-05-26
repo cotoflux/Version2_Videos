@@ -6,14 +6,41 @@ public class Video {
 	
 	private String url;
 	private String title;
-	private List<Tagg> listaTaggs = new ArrayList<Tagg>();
+	private String userName;
+	private List<String> listaTaggs ;
 
 	
-	public Video(String url, String title, List<Tagg> listaTaggs){
+	public Video(String userName, String url, String title){
+		this.userName=userName;
 		this.url = url;
 		this.title = title;
-		this.listaTaggs = listaTaggs;
+		this.listaTaggs = new ArrayList<String>();
 	}
+
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 
 
 	public String getUrl() {
@@ -26,24 +53,25 @@ public class Video {
 	}
 
 
-	public String getTitle() {
-		return title;
-	}
-
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-
-	public List<Tagg> getListaTaggs() {
+	public List<String> getListaTaggs() {
 		return listaTaggs;
 	}
 
 
-	public void setListaTaggs(List<Tagg> listaTaggs) {
+	public void setListaTaggs(List<String> listaTaggs) {
 		this.listaTaggs = listaTaggs;
 	}
-
 	
+	public void addTagg(String Tagg) {
+		this.listaTaggs.add(Tagg);
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Video [url=" + url + ", title=" + title + ", userName=" + userName + ", listaTaggs=" + listaTaggs + "]";
+	}
+
+
 }

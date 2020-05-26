@@ -14,8 +14,7 @@ import javax.swing.JOptionPane;
 public class Uso_clases {
 	public static void main(String[] args) {
 		List<User> users = new ArrayList<User>();
-		List<Tagg> myTaggs = new ArrayList<Tagg>();
-		User administrador = new User("Admin", "Super", "admin","admin123");
+		User administrador = new User("a", "a", "a","a");
 		users.add(administrador);
 		boolean endSession = false;
 		boolean endVideo = false;
@@ -52,8 +51,10 @@ public class Uso_clases {
 						break;
 					case 3:
 						System.out.println("Log in to the application");
-						logInUser(entradas, users);
 						
+						
+							if(logInUser(entradas, users) != null) {
+								User user = logInUser(entradas, users);				
 							do {
 								
 								int videoResponse = videoQuestionsToUser(entradas);
@@ -61,16 +62,17 @@ public class Uso_clases {
 								switch(videoResponse){
 									case 1:
 										System.out.println("Create a new video: ");
-										createAVideo(entradas);
-										endVideo=false;
+										createAVideo(entradas, user);
+										endVideo=true;
 										break;
 									case 2:
 										System.out.println("I want to see all my videos: ");
-										endVideo=false;
+										seeAllVideosForUser(entradas,user);
+										endVideo=true;
 										break;
 									case 3:
 										System.out.println("I want to exit now");
-										endVideo=true;
+										endVideo=false;
 										break;
 									default:
 										System.out.println("We do not have this option. Thank you to enter a valid option");
@@ -78,9 +80,9 @@ public class Uso_clases {
 										break;
 								}
 								
-							}while(endVideo);
-							
-						endSession=false;
+							} while(endVideo);
+						}
+						endSession=true;
 						break;
 					case 4:
 						System.out.println("Exit the aplication");
@@ -98,6 +100,8 @@ public class Uso_clases {
 			
 	}
 	
+
+
 	public static int preguntaDeEntrada(Scanner entradas){
 		
 		boolean numeroIncorrecto=false;
@@ -107,12 +111,8 @@ public class Uso_clases {
 		
         try{
 
-    		System.out.println("Tell me what do you want to do");
-    		System.out.println("Write down an integer, if you writte other than an integer you will be promted the exception and the questions again. ");
-    		System.out.println("1. Register");
-    		System.out.println("2. Unregister");
-    		System.out.println("3. Login");
-    		System.out.println("4. Exit");
+        	menuPrincipal();
+
     		respuesta= Integer.parseInt(entradas.nextLine());
         	System.out.println("The number written in the console is: "+respuesta);
 
@@ -128,6 +128,16 @@ public class Uso_clases {
 		return respuesta;
 	}
 	
+	private static void menuPrincipal() {
+		System.out.println("Tell me what do you want to do");
+		System.out.println("Write down an integer, if you writte other than an integer you will be promted the exception and the questions again. ");
+		System.out.println("1. Register");
+		System.out.println("2. Unregister");
+		System.out.println("3. Login");
+		System.out.println("4. Exit");
+		
+	}
+
 	public static String requestNewUserName(Scanner entradas) {
 
 		System.out.println("Type your name");
@@ -194,27 +204,24 @@ public class Uso_clases {
 		
 	}
 	
-	public static void logInUser(Scanner entradas, List<User> users) {
-		String nameToUnregister= requestNewUserName(entradas);
-		String surnameToUnregister = requestNewUserSurname(entradas);
+	public static User logInUser(Scanner entradas, List<User> users) {
+	
 		String userNameRegister = requestNewUserUserName(entradas);
 		String passwordRegister = requestNewUserPassword(entradas);
 		System.out.println(" ");
+		User user1  = null;
 		
-		User usersRegistered = new User(nameToUnregister, surnameToUnregister, userNameRegister, passwordRegister);
-		/*
-		for(int i=0; i<users.size(); i++) {
-			System.out.println(users.get(i));
-		}*/
+
 		for(User user: users) {
-			System.out.print(usersRegistered);
-			if(user.equals(usersRegistered)) {
-				System.out.println(". Estas correctamente registrado");
+
+			if(user.getUserName().equals(userNameRegister) && user.getPassword().contentEquals(passwordRegister)) {
+				user1 = user;
 			} else {
 				System.out.println(". No te has logeado correctamente");
-				
 			}
 		}
+		return user1;
+
 	}
 	
 	public static int videoQuestionsToUser(Scanner entradas) {
@@ -265,19 +272,34 @@ public class Uso_clases {
 		return taggEntered;
 	}
 	
-	public static void createAVideo(Scanner entradas) {
+	public static void userPass(Scanner entradas, User user) {
 		String url=enterUrl(entradas);
 		String title=enterTitle(entradas);
+	}
+	
+	public static void createAVideo(Scanner entradas, User user) {
+		String userName = user.getUserName();
+		userPass(entradas, user);
+		Video creaUnVideo = new Video(userName, url, title);
 		int numberTaggs = enterNumberOfTaggs(entradas);
-		List<String> myTaggs = new ArrayList<String>();
+		
 		for(int i=0; i<numberTaggs; i++ ) {
 			System.out.println("Entra el tag");
-			myTaggs.add(entradas.next());
+			String entrada = entradas.next();
+			creaUnVideo.addTagg(entrada);
 		}
 		
-		for(int j=0; j<numberTaggs; j++) {
-			System.out.println(myTaggs.get(j));
-		}
+			System.out.println(creaUnVideo.getListaTaggs());
+				
+		System.out.println("El vídeo se ha creado correctamente");
+	
 	}
+	
+	private static void seeAllVideosForUser(Scanner entradas, User user) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
 }
 
