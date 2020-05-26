@@ -272,14 +272,10 @@ public class Uso_clases {
 		return taggEntered;
 	}
 	
-	public static void userPass(Scanner entradas, User user) {
-		String url=enterUrl(entradas);
-		String title=enterTitle(entradas);
-	}
-	
 	public static void createAVideo(Scanner entradas, User user) {
 		String userName = user.getUserName();
-		userPass(entradas, user);
+		String url=enterUrl(entradas);
+		String title=enterTitle(entradas);
 		Video creaUnVideo = new Video(userName, url, title);
 		int numberTaggs = enterNumberOfTaggs(entradas);
 		
@@ -296,7 +292,20 @@ public class Uso_clases {
 	}
 	
 	private static void seeAllVideosForUser(Scanner entradas, User user) {
-		// TODO Auto-generated method stub
+		
+		String name= user.getName();
+		String surname = user.getSurname();
+		String userName = user.getUserName();
+		String password = user.getPassword();
+		System.out.println("Entra el usuario");
+		String entrada = entradas.next();
+		User listaDelUsuario = new User(name, surname, userName, password);
+		if(listaDelUsuario.getUserName().equals(entrada)){
+			System.out.println("Es igual");
+			System.out.println(listaDelUsuario.getListVideosForUser());
+		} else {
+			System.out.println("No es igual");
+		}
 		
 	}
 	
