@@ -17,16 +17,20 @@ public class User {
 		return listVideosForUser;
 	}
 
-	public void setListVideosForUser(List<Video> listVideosForUser) {
+	public void setListVideosForUser(List<Video>listVideosForUsert) {
 		this.listVideosForUser = listVideosForUser;
 	}
 
+	public void addTaggToUser(List<Video> listVideosForUser) {
+		this.listVideosForUser.add((Video) listVideosForUser);
+	}
 	public User(String name, String surname, String userName, String password) {
 		
 		this.name = name;
 		this.surname = surname;
 		this.userName = userName;
 		this.password = password;
+		this.listVideosForUser= new ArrayList<Video>();
 		
 	}
 	
@@ -35,8 +39,6 @@ public class User {
 		this.password = password;
 	}
 	
-
-
 
 	public String getName() {
 		return name;
@@ -69,6 +71,8 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+
 	
 	@Override
 	public String toString() {

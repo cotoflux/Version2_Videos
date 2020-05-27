@@ -74,4 +74,11 @@ public class Video {
 	}
 
 
+
+	public static void setListVideosForUser(Video creaUnVideo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }

@@ -214,7 +214,7 @@ public class Uso_clases {
 
 		for(User user: users) {
 
-			if(user.getUserName().equals(userNameRegister) && user.getPassword().contentEquals(passwordRegister)) {
+			if(user.getUserName().equals(userNameRegister) && user.getPassword().equals(passwordRegister)) {
 				user1 = user;
 			} else {
 				System.out.println(". No te has logeado correctamente");
@@ -276,7 +276,10 @@ public class Uso_clases {
 		
 		
 		String userName = user.getUserName();
-		String url=enterUrl(entradas);
+		String name= user.getName();
+	    String surname= user.getSurname();
+	    String password = user.getPassword();
+;		String url=enterUrl(entradas);
 		String title=enterTitle(entradas);
 		Video creaUnVideo = new Video(userName, url, title);
 		int numberTaggs = enterNumberOfTaggs(entradas);
@@ -288,7 +291,10 @@ public class Uso_clases {
 		}
 		
 			System.out.println(creaUnVideo.getListaTaggs());
-				
+			
+		User newVideoForTheUser = new User(name, surname, userName, password);
+		
+		System.out.println(newVideoForTheUser.setListVideosForUser(creaUnVideo.getListaTaggs()));
 		System.out.println("El vídeo se ha creado correctamente");
 	
 	}
