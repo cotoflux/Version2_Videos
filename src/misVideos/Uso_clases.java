@@ -234,7 +234,7 @@ public class Uso_clases {
 	    		System.out.println("1. Register a new Video");
 	    		System.out.println("2. See my videos");
 	    		System.out.println("3. Exit");
-	    		respuesta= Integer.parseInt(entradas.nextLine());
+	    		respuesta= Integer.parseInt(entradas.next());
 	
 	        	numeroIncorrecto=false;
 	            
@@ -250,13 +250,13 @@ public class Uso_clases {
 	
 	public static String enterUrl(Scanner entradas) {
 		System.out.println("Type the url of the video: ");
-		String urlEntered = entradas.nextLine();
+		String urlEntered = entradas.next();
 		return urlEntered;
 	}
 	
 	public static String enterTitle(Scanner entradas) {
 		System.out.println("Type the title: ");
-		String titleEntered = entradas.nextLine();
+		String titleEntered = entradas.next();
 		return titleEntered;
 	}
 	
@@ -268,11 +268,13 @@ public class Uso_clases {
 	
 	public static String enterTags(Scanner entradas) {
 		System.out.println("Type one tag: ");
-		String taggEntered = entradas.nextLine();
+		String taggEntered = entradas.next();
 		return taggEntered;
 	}
 	
 	public static void createAVideo(Scanner entradas, User user) {
+		
+		
 		String userName = user.getUserName();
 		String url=enterUrl(entradas);
 		String title=enterTitle(entradas);
@@ -306,6 +308,7 @@ public class Uso_clases {
 		} else {
 			System.out.println("No es igual");
 		}
+		
 		
 	}
 	
