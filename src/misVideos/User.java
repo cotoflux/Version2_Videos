@@ -17,12 +17,12 @@ public class User {
 		return listVideosForUser;
 	}
 
-	public void setListVideosForUser(List<Video>listVideosForUsert) {
+	public void setListVideosForUser(List<Video> listVideosForUser) {
 		this.listVideosForUser = listVideosForUser;
 	}
 
-	public void addTaggToUser(List<Video> listVideosForUser) {
-		this.listVideosForUser.add((Video) listVideosForUser);
+	public void addVideoToUser(Video video) {
+		this.listVideosForUser.add(video);
 	}
 	public User(String name, String surname, String userName, String password) {
 		

@@ -52,9 +52,9 @@ public class Uso_clases {
 					case 3:
 						System.out.println("Log in to the application");
 						
-						
-							if(logInUser(entradas, users) != null) {
-								User user = logInUser(entradas, users);				
+							User user = logInUser(entradas, users);						
+							if(user != null) {
+							
 							do {
 								
 								int videoResponse = videoQuestionsToUser(entradas);
@@ -67,7 +67,7 @@ public class Uso_clases {
 										break;
 									case 2:
 										System.out.println("I want to see all my videos: ");
-										seeAllVideosForUser(entradas,user);
+										seeAllVideosForUser(entradas, user);
 										endVideo=true;
 										break;
 									case 3:
@@ -119,7 +119,8 @@ public class Uso_clases {
         	numeroIncorrecto=false;
             
         }catch(NumberFormatException e){
-        	 
+        	 System.out.println("Mensaje de la e: " + e.getMessage());
+        	 System.out.println("Mensaje de la classe e: " +e.getClass());
              System.out.println("Error, the value you introduced is not correct. Please enter an integer to the console");
              numeroIncorrecto=true;
         }
@@ -149,7 +150,7 @@ public class Uso_clases {
 	public static String requestNewUserSurname(Scanner entradas) {
 		
 		System.out.println("Type your surname");
-		String surnameRegistered= entradas.nextLine();
+		String surnameRegistered= entradas.next();
 		return surnameRegistered;
 		
 	}
@@ -158,7 +159,7 @@ public class Uso_clases {
 		
 
 		System.out.println("Type your user name");
-		String userNameRegistered= entradas.nextLine();
+		String userNameRegistered= entradas.next();
 		return userNameRegistered;
 	}
 
@@ -166,7 +167,7 @@ public class Uso_clases {
 		
 
 		System.out.println("Type your password");
-		String passwordRegistered= entradas.nextLine();
+		String passwordRegistered= entradas.next();
 		return passwordRegistered;
 	}
 	
@@ -276,12 +277,13 @@ public class Uso_clases {
 		
 		
 		String userName = user.getUserName();
-		String name= user.getName();
-	    String surname= user.getSurname();
-	    String password = user.getPassword();
-;		String url=enterUrl(entradas);
+//		String name= user.getName();
+//	    String surname= user.getSurname();
+//	    String password = user.getPassword();
+		String url=enterUrl(entradas);
 		String title=enterTitle(entradas);
 		Video creaUnVideo = new Video(userName, url, title);
+		user.addVideoToUser(creaUnVideo);
 		int numberTaggs = enterNumberOfTaggs(entradas);
 		
 		for(int i=0; i<numberTaggs; i++ ) {
@@ -290,17 +292,18 @@ public class Uso_clases {
 			creaUnVideo.addTagg(entrada);
 		}
 		
-			System.out.println(creaUnVideo.getListaTaggs());
+		System.out.println(creaUnVideo.getListaTaggs());
 			
-		User newVideoForTheUser = new User(name, surname, userName, password);
+		//User newVideoForTheUser = new User(name, surname, userName, password);
 		
-		System.out.println(newVideoForTheUser.setListVideosForUser(creaUnVideo.getListaTaggs()));
+		//System.out.println(newVideoForTheUser.setListVideosForUser(creaUnVideo.getListaTaggs()));
 		System.out.println("El vídeo se ha creado correctamente");
 	
 	}
 	
 	private static void seeAllVideosForUser(Scanner entradas, User user) {
 		
+		System.out.println(user.getListVideosForUser());
 		String name= user.getName();
 		String surname = user.getSurname();
 		String userName = user.getUserName();
