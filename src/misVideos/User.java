@@ -1,6 +1,7 @@
 package misVideos;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class User {
@@ -9,6 +10,7 @@ public class User {
 	private String surname;
 	private String userName;
 	private String password;
+	private Calendar dateRegister;
 	List<Video>listVideosForUser = new ArrayList<Video>();
 	
 	public List<Video> getListVideosForUser() {
@@ -21,6 +23,17 @@ public class User {
 
 	public void addVideoToUser(Video video) {
 		this.listVideosForUser.add(video);
+	}
+	
+	public User(String name, String surname, String userName, String password, Calendar dateRegister) {
+		
+		this.name = name;
+		this.surname = surname;
+		this.userName = userName;
+		this.password = password;
+		this.dateRegister = dateRegister;
+		this.listVideosForUser= new ArrayList<Video>();
+		
 	}
 	public User(String name, String surname, String userName, String password) {
 		

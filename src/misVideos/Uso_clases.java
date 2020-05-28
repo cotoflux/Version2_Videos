@@ -145,7 +145,7 @@ public class Uso_clases {
 	public static String requestNewUserName(Scanner entradas) {
 
 		System.out.println("Type your name");
-		String nameRegistered= entradas.nextLine();
+		String nameRegistered= entradas.next();
 		return nameRegistered;
 		
 	}
@@ -180,8 +180,11 @@ public class Uso_clases {
 		String surname = requestNewUserSurname(entradas);
 		String userName = requestNewUserUserName(entradas);
 		String password = requestNewUserPassword(entradas);
+        Calendar dateRegister = GregorianCalendar.getInstance();
+
+        System.out.println("Fecha actual: "+dateRegister.getTime());
 				
-		User newUsers = new User(name, surname, userName, password);
+		User newUsers = new User(name, surname, userName, password, dateRegister);
 		users.add(newUsers);
 	}
 	
