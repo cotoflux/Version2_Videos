@@ -42,7 +42,7 @@ public class Uso_clases {
 						System.out.println("Register for new user____________________________________________________________________"); 
 						createUser(entradas, users);
 						System.out.println("You have been correctly registered! Welcome!!");
-						System.out.println(users.toString());
+						//System.out.println(users.toString());
 						endSession=true;
 						break;
 					
@@ -117,8 +117,7 @@ public class Uso_clases {
         	menuPrincipal();
 
     		respuesta= Integer.parseInt(entradas.next());
-        	System.out.println("The number written in the console is: "+respuesta);
-
+        	//System.out.println("The number written in the console is: "+respuesta);
         	numeroIncorrecto=false;
             
         }catch(NumberFormatException e){
