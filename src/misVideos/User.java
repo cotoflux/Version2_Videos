@@ -10,8 +10,6 @@ public class User {
 	private String userName;
 	private String password;
 	List<Video>listVideosForUser = new ArrayList<Video>();
-
-
 	
 	public List<Video> getListVideosForUser() {
 		return listVideosForUser;

@@ -4,7 +4,9 @@ import java.awt.Component;
 import java.awt.Container;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.List;
@@ -14,18 +16,19 @@ import javax.swing.JOptionPane;
 public class Uso_clases {
 	public static void main(String[] args) {
 		List<User> users = new ArrayList<User>();
-		User administrador = new User("a", "a", "a","a");
+		User administrador = new User("a", "a", "a", "a");
 		users.add(administrador);
 		boolean endSession = false;
 		boolean endVideo = false;
 		Scanner entradas = new Scanner(System.in);
 		
+
 		
 		do {
 			
 		
 			int respuestaInicial = preguntaDeEntrada(entradas);
-		
+
 
 			if(respuestaInicial != 1  && respuestaInicial !=2  && respuestaInicial != 3 && respuestaInicial != 4) {
 				
@@ -36,21 +39,21 @@ public class Uso_clases {
 			} else {
 				switch(respuestaInicial) {
 					case 1:
-						System.out.println("Register for new user"); 
+						System.out.println("Register for new user____________________________________________________________________"); 
 						createUser(entradas, users);
-						System.out.println("Estas correctamente registrado");
+						System.out.println("You have been correctly registered! Welcome!!");
 						System.out.println(users.toString());
 						endSession=true;
 						break;
 					
 					case 2:
-						System.out.println("Un registrer a user");
+						System.out.println("Un registrer a user______________________________________________________________________");
 						unRegisterOneUser(entradas, users); 
 						System.out.println("Pitty that you unregister. Remember you will welcome back any time");
 						endSession= true;
 						break;
 					case 3:
-						System.out.println("Log in to the application");
+						System.out.println("Log in to the application:_______________________________________________________________");
 						
 							User user = logInUser(entradas, users);						
 							if(user != null) {
@@ -61,12 +64,12 @@ public class Uso_clases {
 								
 								switch(videoResponse){
 									case 1:
-										System.out.println("Create a new video: ");
+										System.out.println("Create a new video:______________________________________________________ ");
 										createAVideo(entradas, user);
 										endVideo=true;
 										break;
 									case 2:
-										System.out.println("I want to see all my videos: ");
+										System.out.println("I want to see all my videos:______________________________________________ ");
 										seeAllVideosForUser(entradas, user);
 										endVideo=true;
 										break;
@@ -113,15 +116,15 @@ public class Uso_clases {
 
         	menuPrincipal();
 
-    		respuesta= Integer.parseInt(entradas.nextLine());
+    		respuesta= Integer.parseInt(entradas.next());
         	System.out.println("The number written in the console is: "+respuesta);
 
         	numeroIncorrecto=false;
             
         }catch(NumberFormatException e){
-        	 System.out.println("Mensaje de la e: " + e.getMessage());
-        	 System.out.println("Mensaje de la classe e: " +e.getClass());
-             System.out.println("Error, the value you introduced is not correct. Please enter an integer to the console");
+        	 //System.out.println("Mensaje de la e: " + e.getMessage());
+        	 //System.out.println("Mensaje de la classe e: " +e.getClass());
+             System.out.println("Error, the value you introduced is not correct. Please remember to introduce a valid integer to the console");
              numeroIncorrecto=true;
         }
 		}while(numeroIncorrecto==true);
@@ -130,13 +133,13 @@ public class Uso_clases {
 	}
 	
 	private static void menuPrincipal() {
-		System.out.println("Tell me what do you want to do");
-		System.out.println("Write down an integer, if you writte other than an integer you will be promted the exception and the questions again. ");
+		System.out.println("======================================================================================================================");
+		System.out.println("Welcome, to start using the aplication write down an valid integer, from the options below: ");
 		System.out.println("1. Register");
 		System.out.println("2. Unregister");
 		System.out.println("3. Login");
 		System.out.println("4. Exit");
-		
+		System.out.println("======================================================================================================================");
 	}
 
 	public static String requestNewUserName(Scanner entradas) {
@@ -218,7 +221,7 @@ public class Uso_clases {
 			if(user.getUserName().equals(userNameRegister) && user.getPassword().equals(passwordRegister)) {
 				user1 = user;
 			} else {
-				System.out.println(". No te has logeado correctamente");
+				System.out.println("You have not been correctly logged in!");
 			}
 		}
 		return user1;
@@ -230,11 +233,12 @@ public class Uso_clases {
 		boolean numeroIncorrecto=false;
 		
 	        try{
-	
+	        	System.out.println("**********************************************************************************************************************");
 	    		System.out.println("Tell me what you want to do, insert a number from 1 to 3");
 	    		System.out.println("1. Register a new Video");
 	    		System.out.println("2. See my videos");
 	    		System.out.println("3. Exit");
+	    		System.out.println("**********************************************************************************************************************");
 	    		respuesta= Integer.parseInt(entradas.next());
 	
 	        	numeroIncorrecto=false;
