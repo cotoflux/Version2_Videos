@@ -42,7 +42,6 @@ public class Uso_clases {
 						System.out.println("Register for new user____________________________________________________________________"); 
 						createUser(entradas, users);
 						System.out.println("You have been correctly registered! Welcome!!");
-						//System.out.println(users.toString());
 						endSession=true;
 						break;
 					
@@ -117,12 +116,9 @@ public class Uso_clases {
         	menuPrincipal();
 
     		respuesta= Integer.parseInt(entradas.next());
-        	//System.out.println("The number written in the console is: "+respuesta);
         	numeroIncorrecto=false;
             
         }catch(NumberFormatException e){
-        	 //System.out.println("Mensaje de la e: " + e.getMessage());
-        	 //System.out.println("Mensaje de la classe e: " +e.getClass());
              System.out.println("Error, the value you introduced is not correct. Please remember to introduce a valid integer to the console");
              numeroIncorrecto=true;
         }
@@ -277,34 +273,35 @@ public class Uso_clases {
 		System.out.println("Type one tag: ");
 		String taggEntered = entradas.next();
 		return taggEntered;
+
 	}
 	
 	public static void createAVideo(Scanner entradas, User user) {
 		
 		
 		String userName = user.getUserName();
-//		String name= user.getName();
-//	    String surname= user.getSurname();
-//	    String password = user.getPassword();
 		String url=enterUrl(entradas);
 		String title=enterTitle(entradas);
 		Video creaUnVideo = new Video(userName, url, title);
 		user.addVideoToUser(creaUnVideo);
-		int numberTaggs = enterNumberOfTaggs(entradas);
 		
-		for(int i=0; i<numberTaggs; i++ ) {
-			System.out.println("Entra el tag");
-			String entrada = entradas.next();
-			creaUnVideo.addTagg(entrada);
+		try{
+			int numberTaggs = enterNumberOfTaggs(entradas);
+			for(int i=0; i<numberTaggs; i++ ) {
+				System.out.println("Entra el tag");
+				String entrada = entradas.next();
+				creaUnVideo.addTagg(entrada);
+			}
+			
+			System.out.println(creaUnVideo.getListaTaggs());
+			System.out.println("El vídeo se ha creado correctamente");
+			
+		}catch(Exception e) {
+			System.out.println("//////////////////////////////////////  ERROR INFORMATION  /////////////////////////////////////////////");
+			System.out.println("Error, we have not been able to do your request as you dit not enter a integer number for the Number of Taggs");
+			System.out.println("//////////////////////////////////////  ERROR INFORMATION  /////////////////////////////////////////////");
 		}
 		
-		System.out.println(creaUnVideo.getListaTaggs());
-			
-		//User newVideoForTheUser = new User(name, surname, userName, password);
-		
-		//System.out.println(newVideoForTheUser.setListVideosForUser(creaUnVideo.getListaTaggs()));
-		System.out.println("El vídeo se ha creado correctamente");
-	
 	}
 	
 	private static void seeAllVideosForUser(Scanner entradas, User user) {
