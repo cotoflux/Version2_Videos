@@ -218,8 +218,6 @@ public class Uso_clases {
 
 			if(user.getUserName().equals(userNameRegister) && user.getPassword().equals(passwordRegister)) {
 				user1 = user;
-			} else {
-				System.out.println("You have not been correctly logged in!");
 			}
 		}
 		return user1;
